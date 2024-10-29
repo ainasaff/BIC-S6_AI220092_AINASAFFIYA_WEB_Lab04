@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books Collection</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Books Collection</h1>
+    <table id="booksTable">
+        <thead>
+            <tr>
+                <th></th> 
+                <th>Book 1</th>
+                <th>Book 2</th>
+            </tr>
+        </thead>
+        <tbody>
+           
+        </tbody>
+    </table>
+
+    <script>
+        // Fetch data from the JSON file and populate table
+        fetch('books.json')
+            .then(response => response.json())
+            .then(data => {
+                const tableBody = document.getElementById('booksTable').querySelector('tbody');
+                
+                // Define the attributes to display
+                const attributes = ["title", "author", "publicationYear", "genres"];
+                
+                // Create rows for each attribute (title, author, publicationYear, genres)
+                attributes.forEach(attribute => {
+                    const row = document.createElement('tr');
+
+                    // Add the attribute name as the first cell in the row
+                    const attributeCell = document.createElement('td');
+                    attributeCell.textContent = attribute;
+                    attributeCell.style.fontWeight = "bold";
+                    row.appendChild(attributeCell);
+
+                    // Add each book's attribute value in the following cells
+                    data.books.forEach(book => {
+                        const valueCell = document.createElement('td');
+                        
+                        if (attribute === "genres") {
+                            valueCell.textContent = book[attribute].join(", "); // Join genres with a comma
+                        } else {
+                            valueCell.textContent = book[attribute];
+                        }
+                        
+                        row.appendChild(valueCell);
+                    });
+
+                    tableBody.appendChild(row);
+                });
+            })
+            .catch(error => console.error('Error loading JSON:', error));
+    </script>
+</body>
+</html>
