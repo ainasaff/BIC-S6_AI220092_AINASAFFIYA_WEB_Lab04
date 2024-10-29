@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Content Example</title>
+
+    
+    <link rel="stylesheet" href="styles.css">
+
+    <script>
+        // JavaScript function to change the content of the paragraph
+        function changeContent() {
+            // Selects the <p> element inside the div with id="myElement"
+            document.querySelector("#myElement p").textContent = "Hello there!";
+        }
+    </script>
+</head>
+<body>
+
+<div id="myElement">
+    <p>Welcome to my website!</p>
+</div>
+
+
+<button onclick="changeContent()">Click me to change content</button>
+
+</body>
+</html>

@@ -1,0 +1,13 @@
+body {
+    background-color: pink;
+    display: flex;
+    justify-content:left;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+#demo {
+    color: rgb(0, 0, 0);
+    font-family: Arial, sans-serif;
+  }
+  
